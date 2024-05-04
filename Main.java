@@ -7,15 +7,25 @@ import company.utils.MathUtils;
 public class Main {
     public static void main(String[] args) {
         try {
-            Person person = new Person("John", 30);
-            System.out.println("Name: " + person.getName());
-            System.out.println("Age: " + person.getAge());
+            Person[] people =new Person[5];
 
-            int result = MathUtils.add(10, 20);
-            System.out.println("Addition Result: " + result);
+            final int b = 10;
 
-            Messenger messenger = new EmailMessenger();
-            messenger.sendMessage("test message and Addition result: " + result);
+            people[0] = new Person("John Doe", 30);
+            people[1] = new Person("Jack Rabbit", 20);
+            people[2] = new Person("Will Smith", 27);
+            people[3] = new Person("Gary Roger", 35);
+            people[4] = new Person("Rob Lil", 56);
+            
+
+            for (Person person : people) {
+                int result = MathUtils.add(person.getAge(), b);
+                System.out.println("Result for " + person.getName() + " + " + result);
+
+                Messenger messenger = new EmailMessenger();
+                messenger.sendMessage("The result for " + person.getName() + " is: " + result);
+            }
+            
         } catch (InvalidAgeException e) {
             System.out.println("Invalid age: " + e.getMessage());
         }
